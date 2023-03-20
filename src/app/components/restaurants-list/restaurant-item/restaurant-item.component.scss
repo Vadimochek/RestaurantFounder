@@ -1,0 +1,90 @@
+@mixin md {
+  @media (max-width: (1060px)) {
+    @content;
+  }
+}
+
+
+.restaurant-card {
+  width: 100%;
+  margin-bottom: 30px;
+
+  &.grid-item {
+    margin: 0;
+    max-width: 300px;
+    min-height: 382px;
+
+    @include md {
+      max-width: unset;
+      min-width: 376px;
+    }
+
+    .restaurant-card__img {
+      height: 150px;
+    }
+
+    .restaurant-card__body {
+      overflow: hidden;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .restaurant-card__cost {
+      display: block;
+    }
+  }
+
+  &__header {
+    margin-bottom: 10px;
+  }
+
+  &__img {
+    object-fit: cover;
+    height: 300px;
+  }
+
+  &__rating {
+    margin-right: 10px;
+  }
+
+  &__kitchen {
+    margin-right: 5px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: currentColor;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    margin-bottom: 5px;
+
+    &:hover {
+      transition: border-color 0.3s;
+      border-bottom: 2px solid #000;
+    }
+  }
+
+  &__body {
+    display: flex;
+  }
+
+  &__body-header {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.card-body {
+  &__wrapper {
+    span {
+      &:not(&:last-child) {
+        &::after {
+          content: ",";
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@import "swiper/swiper-bundle.min.css";
+
+@mixin lg {
+  @media (max-width: (1420px)) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: (1060px)) {
+    @content;
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: url("./assets/Frame 3.png") center / cover;
+
+}
+
+.full-width-field {
+  display: block;
+  width: 100%;
+}
+
+.swiper-pagination {
+  bottom: 0 !important;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #673ab7 !important;
+}

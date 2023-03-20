@@ -1,0 +1,13 @@
+<div class="slider">
+  <swiper
+    [config]="config"
+    (swiper)="onSwiper($event)"
+    #swiper
+  >
+    <ng-template swiperSlide *ngFor="let restaurant of restaurantsList">
+      <div class="slider-item">
+        <app-restaurant-item [item]="restaurant"></app-restaurant-item>
+      </div>
+    </ng-template>
+  </swiper>
+</div>

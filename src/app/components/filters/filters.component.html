@@ -1,0 +1,37 @@
+<div class="filters">
+  <p>Сортировка</p>
+  <mat-form-field appearance="outline" class="filters-sort">
+    <mat-label>Сортировка</mat-label>
+    <select matNativeControl (change)="sortRestaurants($event)">
+      <option *ngFor="let option of sortSelect" [value]="option.id"
+              [selected]="selectedSort === option.id">{{ option.label }}</option>
+    </select>
+  </mat-form-field>
+  <p>Фильтры</p>
+  <form [formGroup]="filtersForm" class="filters-form" (ngSubmit)="filterRestaurants()">
+    <mat-form-field appearance="outline">
+      <mat-label>Кухня</mat-label>
+      <mat-select formControlName="mainKitchen">
+        <mat-option value="">Любая</mat-option>
+        <mat-option *ngFor="let kitchen of kitchens" [value]="kitchen">
+          {{kitchen}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Город</mat-label>
+      <input matInput formControlName="city"/>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Цена</mat-label>
+      <mat-select formControlName="cost">
+        <mat-option value="">Любая</mat-option>
+        <mat-option *ngFor="let item of cost" [value]="item.value">
+          {{item.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit">Применить</button>
+  </form>
+</div>

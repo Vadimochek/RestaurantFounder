@@ -1,0 +1,28 @@
+<div class="restaurants">
+  <mat-spinner *ngIf="loading$ | async; else restList" class="spinner"></mat-spinner>
+  <div *ngIf="isEmpty && !(loading$ | async)" class="restaurants__not-found not-found">
+    <img class="not-found__img" src="./assets/not-found.svg" alt="not-found">
+    <p class="not-found__text">Ничего не найдено</p>
+  </div>
+  <ng-template #restList>
+    <app-grid-toggle *ngIf="!isEmpty && !(loading$ | async)" (typeEvent)="changeType($event)"></app-grid-toggle>
+    <app-slider *ngIf="type === 'slider'; else restsItems" [restaurantsList]="restaurants"></app-slider>
+    <ng-template #restsItems>
+      <div class="restaurants__list" [ngClass]="{
+    'grid': type === 'grid',
+    'slider': type === 'slider'
+    }">
+        <app-restaurant-item *ngFor="let item of restaurants" [item]="item" [type]="type">
+        </app-restaurant-item>
+      </div>
+    </ng-template>
+  </ng-template>
+  <mat-paginator
+    [length]="length"
+    [pageSize]="1"
+    [hidePageSize]="true"
+    (page)="page($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
